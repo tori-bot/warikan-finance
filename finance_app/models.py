@@ -1,7 +1,10 @@
+from curses import ALL_MOUSE_EVENTS
+from unicodedata import category, name
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from secretstorage import Item
 # Create your models here.
 class Profile(models.Model):
     CATEGORIES=(
@@ -74,3 +77,23 @@ class Account(models.Model):
         self.amount=amount
         self.description=description
         self.save()
+
+CATEGORIES=(
+    ('weekly', 'weekly'),
+    ('2 weeks', '2 weeks'),
+    ('monthly', 'monthly'),
+    ('quarterly', 'quarterly'),
+    ('6 months', '6 months'),
+    ('annually', 'annually'),
+)
+# class Budget(models.Model):
+#     category=models.CharField(max_length=30,choices=CATEGORIES,default='weekly',null=True)
+#     amount=models.IntegerField()
+#     description=models.TextField()
+
+class Bill(models.Model):
+    category=models.CharField(max_length=30,choices=CATEGORIES,default='monthly',null=True)
+    name=models.CharField(max_length=100,null=True)
+    amount=models.IntegerField()
+    description=models.TextField()
+
