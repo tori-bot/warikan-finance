@@ -9,3 +9,11 @@ body{
     width: 10em;
     border-radius: 50%;
 }
+.account_overview{
+    margin: 3vh 3vw;
+    text-align: center;
+    padding: 2vh 0;
+    border: 1px solid #4F86C6;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px #4F86C6;
+}

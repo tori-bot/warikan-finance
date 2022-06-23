@@ -49,6 +49,6 @@ CATEGORIES=(
 class Account(models.Model):
     name = models.CharField(max_length=100)
     category=models.CharField(max_length=30,choices=CATEGORIES,default='cash',null=True)
+    amount=models.IntegerField(null=True)
     description = models.TextField()
-    user=models.ForeignKey(User,on_delete=models.CASCADE)
-    
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)

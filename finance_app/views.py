@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render,get_list_or_404,redirect
 from django.contrib.auth.decorators import login_required
-from .models import User,Profile
-from .forms import ProfileForm
+from .models import User,Profile,Account
+from .forms import AccountForm, ProfileForm
 # from .email import send_welcome_email
 
 # Create your views here.
@@ -11,12 +11,14 @@ def home(request):
     current_user = request.user
     user = User.objects.get(id=current_user.id)
     profile = Profile.get_profile_by_id(user.id)
+
+    accounts= Account.objects.all()
     
 
     context = {
         'profile': profile,
         'user': user,
-     
+        'accounts': accounts,
     }
     return render(request,'home.html', context)
 
@@ -41,15 +43,23 @@ def profile_form(request, id):
         }
         return render(request, 'profile_form.html', context)
 
-# def profile(request):
-#     current_user = request.user
-#     user = User.objects.get(id=current_user.id)
-#     profile = Profile.get_profile_by_id(user.id)
+def account_form(request, id):
+    current_user = request.user
+    user = User.objects.get(id=id)
     
+    account_form = AccountForm()
+    if request.method == 'POST':
+        account_form = AccountForm(
+            request.POST, request.FILES)
+        if account_form.is_valid():
+            account_form.save()
 
-#     context = {
-#         'profile': profile,
-#         'user': user,
-     
-#     }
-#     return render(request, 'profile.html', context)
+            return redirect('home')
+        else:
+            return HttpResponse('Please fill the form correctly.')
+    else:
+        context = {
+            'account_form': account_form,
+            'user': user
+        }
+        return render(request, 'account_form.html', context)

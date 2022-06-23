@@ -15,8 +15,26 @@
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">...
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="container">
         <h1>Welcome to Warikan Finance </h1>
+        <div class="row">
+        {% for item in accounts %}
+        <div class="col-md-5 card account_overview">
+          <h3>{{item.name}} </h3>
+          <p>{{item.category}} </p>
+          <h4>ksh. {{item.amount}} </h4>
+          <p>{{item.description}} </p>
+        <a href="# ">Edit Account</a>  
+        </div>
+        {% empty %}
+        <h2>No registered accounts.</h2>
+        {% endfor %}
+        </div>
+        <a href="{% url 'account_form' user.id %} ">Add Account</a> 
+      </div>
+        
+        
     </div>
 
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -27,7 +45,9 @@
       <a href="{% url 'profile_form' user.id %} ">Edit profile</a>
       </div
         
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <p>contacts</p>
+    </div>
   </div>
   
 
