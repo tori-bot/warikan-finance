@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+    {% for item in news %}
+    <div class="card">
+      <img src="{{item.urlToImage}} " alt="img">
+    <p>{{item.author}} </p>
+    <h4>{{item.title}} </h4>
+    <p>{{item.description}} </p>
+    <a href="{{item.url}} "><button>Read more</button></a>  
+    </div>
+    
+    {% endfor %}
+</div>
+
+{% endblock %}

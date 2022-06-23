@@ -3,6 +3,7 @@ from django.shortcuts import render,get_list_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from .models import User,Profile,Account,Bill
 from .forms import AccountForm, BillForm, ProfileForm
+from .requests import get_all_news,youtube_video
 # from .email import send_welcome_email
 
 # Create your views here.
@@ -89,3 +90,13 @@ def bill_form(request, id):
             'user': user
         }
         return render(request, 'bill_form.html', context)
+
+def news(request):
+    news=get_all_news()
+    return render(request,'news.html',{'news': news})
+
+def insights(request):
+    youtube_id=youtube_video()
+    video_url=f'https://www.youtube.com/embed/{youtube_id}?autoplay=1&muted=0'
+    
+    return render(request,'insights.html',{'video_url':video_url})

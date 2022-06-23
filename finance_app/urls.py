@@ -10,5 +10,6 @@ urlpatterns = [
     path('bill_form/<int:id>',views.bill_form,name='bill_form'),
 
     path('about/',views.about,name='about'),
+    path('news/',views.news,name='news'),
 
 ]
