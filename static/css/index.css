@@ -17,3 +17,11 @@ body{
     border-radius: 5px;
     box-shadow: 4px 4px 4px #4F86C6;
 }
+.contacts{
+    text-align: center;
+    margin-top: 5vh;
+}
+.socials a{
+    font-size: 2em;
+    margin: 1vh 2vw;
+}
