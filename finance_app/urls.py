@@ -8,4 +8,6 @@ urlpatterns = [
 
     path('account_form/<int:id>',views.account_form,name='account_form'),
 
+    path('about/',views.about,name='about'),
+
 ]

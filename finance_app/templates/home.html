@@ -5,22 +5,25 @@
 
 <ul class="nav justify-content-center nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Overview</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Budget</button>
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
       <div class="container">
-        <h1>Welcome to Warikan Finance </h1>
+        <div class="row">
+          <div class="col-md-6"> <h1>Your Accounts. </h1>
+        <hr>
+        
         <div class="row">
         {% for item in accounts %}
-        <div class="col-md-5 card account_overview">
+        <div class="col-md-8 card account_overview">
           <h3>{{item.name}} </h3>
           <p>{{item.category}} </p>
           <h4>ksh. {{item.amount}} </h4>
@@ -31,19 +34,51 @@
         <h2>No registered accounts.</h2>
         {% endfor %}
         </div>
-        <a href="{% url 'account_form' user.id %} ">Add Account</a> 
+        <a href="{% url 'account_form' user.id %} ">Add Account</a></div>
+          <div class="col-md-6">
+            <h1>Budget</h1>
+            <hr>
+            <p>Budget items</p>
+          </div>
+        </div>
+        
       </div>
         
         
     </div>
 
     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-      <img class="profilepic" src="{{profile.profile_picture.url}} " alt="ppic">
+      
+      <div class="container">
+<div class="row">
+        <div class="col-md-4">
+          <img class="profilepic" src="{{profile.profile_picture.url}} " alt="ppic">
       <h3>{{profile.user.username}} </h3>
       <p>{{profile.bio}} </p>
       <a href="{% url 'profile_form' user.id %} ">Edit profile</a>
-      </div
+        </div>
+        <div class="col-md-4">
+          <h3>Personal Info</h3>
+          <hr>
+          <p>Gender: {{profile.gender}} </p>
+          <p>DOB: {{profile.date_of_birth}} </p>
+          <p>Country: {{profile.country}} </p>
+          <p>City: {{profile.city}} </p>
+        </div>
+        <div class="col-md-4">
+          <h3>Accounts Summary</h3>
+          <hr>
+          {% for item in accounts %}
+          <p>{{item.name}} ~ ksh {{item.amount}} </p>
+          {% empty %}
+          <p>No registered accounts</p>
+          {% endfor %}
+        </div>
+      </div>
+      </div>
+      
+      
+    </div>
         
     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
       <div class="row contacts">

@@ -22,6 +22,9 @@ def home(request):
     }
     return render(request,'home.html', context)
 
+def about(request):
+    return render(request,'about.html')
+
 def profile_form(request, id):
     user = User.objects.get(id=id)
     profile = Profile.objects.get(user=user)
