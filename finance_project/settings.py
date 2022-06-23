@@ -35,7 +35,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,6 +54,8 @@ INSTALLED_APPS = [
 
     'bootstrap5',
     'bootstrapform',
+    "crispy_forms",
+    "crispy_bootstrap5",
 
     
 ]

@@ -41,3 +41,14 @@ class Profile(models.Model):
     def __str__(self):
         return self.user
 
+CATEGORIES=(
+    ('cash', 'cash'),
+    ('bank account', 'bank account'),
+    ('mpesa', 'mpesa'),
+)
+class Account(models.Model):
+    name = models.CharField(max_length=100)
+    category=models.CharField(max_length=30,choices=CATEGORIES,default='cash',null=True)
+    description = models.TextField()
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    
