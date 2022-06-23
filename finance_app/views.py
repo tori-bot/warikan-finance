@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render,get_list_or_404,redirect
 from django.contrib.auth.decorators import login_required
-from .models import User,Profile,Account
-from .forms import AccountForm, ProfileForm
+from .models import User,Profile,Account,Bill
+from .forms import AccountForm, BillForm, ProfileForm
 # from .email import send_welcome_email
 
 # Create your views here.
@@ -13,12 +13,14 @@ def home(request):
     profile = Profile.get_profile_by_id(user.id)
 
     accounts= Account.objects.all()
+    bills=Bill.objects.all()
     
 
     context = {
         'profile': profile,
         'user': user,
         'accounts': accounts,
+        'bills': bills
     }
     return render(request,'home.html', context)
 
@@ -66,3 +68,24 @@ def account_form(request, id):
             'user': user
         }
         return render(request, 'account_form.html', context)
+
+def bill_form(request, id):
+    current_user = request.user
+    user = User.objects.get(id=id)
+    
+    bill_form = BillForm()
+    if request.method == 'POST':
+        bill_form = BillForm(
+            request.POST, request.FILES)
+        if bill_form.is_valid():
+            bill_form.save()
+
+            return redirect('home')
+        else:
+            return HttpResponse('Please fill the form correctly.')
+    else:
+        context = {
+            'bill_form': bill_form,
+            'user': user
+        }
+        return render(request, 'bill_form.html', context)

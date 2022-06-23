@@ -17,6 +17,26 @@ body{
     border-radius: 5px;
     box-shadow: 4px 4px 4px #4F86C6;
 }
+.bill_overview{
+    margin: 3vh 3vw;
+    text-align: center;
+    padding: 2vh 0;
+    border: 1px solid #92374D;
+    border-radius: 5px;
+    box-shadow: 4px 4px 4px #92374D;
+}
+.accountbtn{
+    border-radius: 5px;
+    border: 1px solid #4F86C6;
+}
+.billbtn{
+    border-radius: 5px;
+    border: 1px solid #92374D;
+}
+.accountbtn:hover{
+    background-color: #4F86C6,
+    
+}
 .contacts{
     text-align: center;
     margin-top: 5vh;
