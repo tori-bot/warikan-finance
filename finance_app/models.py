@@ -4,9 +4,17 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 # Create your models here.
 class Profile(models.Model):
+    CATEGORIES=(
+        ('non-binary','non-binary'),
+    ('male', 'male'),
+    ('female', 'female'),
+    )
     user=models.OneToOneField(User,primary_key=True,on_delete=models.CASCADE)   
     profile_picture=models.ImageField(upload_to='profile_pictures/',default='default.jpg',null=True) 
     bio=models.TextField()
+    gender=models.CharField(max_length=30,choices=CATEGORIES,default='non-binary',null=True,blank=True)
+    country=models.CharField(max_length=50,null=True,blank=True)
+    date_of_birth=models.DateField(null=True, blank=True)
     
     
     @receiver(post_save, sender=User) 
@@ -52,3 +60,15 @@ class Account(models.Model):
     amount=models.IntegerField(null=True)
     description = models.TextField()
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+
+
+    def delete_account(self):
+        self.delete()
+
+    def update_account(self,name,category,amount,description,user):
+        self.user=user
+        self.name=name
+        self.category=category
+        self.amount=amount
+        self.description=description
+        self.save()
