@@ -13,8 +13,10 @@ class Profile(models.Model):
     profile_picture=models.ImageField(upload_to='profile_pictures/',default='default.jpg',null=True) 
     bio=models.TextField()
     gender=models.CharField(max_length=30,choices=CATEGORIES,default='non-binary',null=True,blank=True)
-    country=models.CharField(max_length=50,null=True,blank=True)
     date_of_birth=models.DateField(null=True, blank=True)
+    country=models.CharField(max_length=50,null=True,blank=True)
+    city=models.CharField(max_length=50,null=True,blank=True)
+
     
     
     @receiver(post_save, sender=User) 

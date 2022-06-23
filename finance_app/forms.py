@@ -2,9 +2,14 @@ from django import forms
 from .models import Profile,Account
 
 class ProfileForm(forms.ModelForm):
+    date_of_birth = forms.DateField(
+    widget=forms.TextInput(     
+        attrs={'type': 'date'} 
+    )
+)
     class Meta:
         model = Profile
-        fields = ( 'profile_picture','bio','gender','country','date_of_birth')
+        fields = ( 'profile_picture','bio','gender','date_of_birth','country','city')
 
 class AccountForm(forms.ModelForm):
     class Meta:
