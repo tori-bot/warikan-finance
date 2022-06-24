@@ -14,7 +14,7 @@ def get_all_news():
 def youtube_videos():
     title='money management'
     search_query = title.replace(' ', '+')
-    url=f'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q={search_query}&key={config("YOUTUBE_API")}'
+    url=f'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q={search_query}&key={config("YOUTUBE_API")}'
     response=requests.get(url)
     videos = response.json()
     video_list=[]

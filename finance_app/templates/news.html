@@ -3,16 +3,23 @@
 {% block content %}
 {{block.super}}
 <div class="container">
-    {% for item in news %}
-    <div class="card">
+    <h1>Finance News.</h1>
+    <hr>
+    <h5>Stay on the know about global financial news and trends.</h5>
+    <div class="row">
+        {% for item in news %}
+    <div class="col-md-5 card newscard">
       <img src="{{item.urlToImage}} " alt="img">
-    <p>{{item.author}} </p>
+    <p>by~ {{item.author}} </p>
     <h4>{{item.title}} </h4>
     <p>{{item.description}} </p>
-    <a href="{{item.url}} "><button>Read more</button></a>  
+    <p>{{item.publishedAt |date:"Y-m-d H:i"  }} </p>
+    <a href="{{item.url}} "><button class="pretty_button">Read more</button></a>  
     </div>
     
     {% endfor %}
+    </div>
+    
 </div>
 
 {% endblock %}

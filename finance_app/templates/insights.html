@@ -3,10 +3,16 @@
 {% block content %}
 {{block.super}}
 <div class="container">
+    <h1>Finance insights.</h1>
+    <hr>
+    <h5> We have curated a collection of select resources for you. We hope they will inspire you to learn more about money management.</h5>
     <div class="row">
         {% for item in videos %}
         <div class="col-md-6">
-           <iframe width="500" height="300" src="{{item}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>  
+            <div class="card video">
+              <iframe  src="{{item}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+            </div>
+            
         </div>
        
         {% endfor %}

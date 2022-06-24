@@ -1,6 +1,7 @@
 body{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+
 .login_form{
     margin-top: 20vh;
 }
@@ -28,15 +29,29 @@ body{
 .accountbtn{
     border-radius: 5px;
     border: 1px solid #4F86C6;
+    padding: 1vh 1vw;
 }
 .billbtn{
     border-radius: 5px;
     border: 1px solid #92374D;
+    padding: 1vh 1vw;
 }
 .accountbtn:hover{
     background-color: #4F86C6,
     
 }
+.brand{
+    color: #4F86C6;
+}
+.pretty_button{
+    border-radius: 5px;
+    border: 1px solid #4F86C6;
+    padding: 1vh 1vw;
+}
+.pretty_button:hover{
+    background-color: #4F86C6,
+}
+
 .contacts{
     text-align: center;
     margin-top: 5vh;
@@ -44,4 +59,20 @@ body{
 .socials a{
     font-size: 2em;
     margin: 1vh 2vw;
+}
+iframe{
+    height: 15em;
+    width: 30em;
+}
+.video{
+    margin: 3vh 3vw;
+}
+.newscard{
+    margin: 4vh 3vw;
+    border: none;
+}
+.card img{
+    object-fit: cover;
+    height: 20vh;
+    width: 100%;
 }
