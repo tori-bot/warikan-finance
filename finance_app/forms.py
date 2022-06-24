@@ -25,4 +25,4 @@ class BillForm(forms.ModelForm):
 )
     class Meta:
         model = Bill
-        fields = ['category','name','amount','description','account','due_date']
+        fields = ['category','name','amount','description','due_date']

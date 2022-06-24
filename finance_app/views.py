@@ -91,7 +91,7 @@ def bill_form(request, id):
                name=bill_form.cleaned_data.get('name'),
                amount=bill_form.cleaned_data.get('amount'),
                 description=bill_form.cleaned_data.get('description'),
-                account=bill_form.cleaned_data.get('account'),
+                
                 due_date=bill_form.cleaned_data.get('due_date'),
                 user=user
            )

@@ -98,7 +98,7 @@ class Bill(models.Model):
     name=models.CharField(max_length=100,null=True)
     amount=models.IntegerField()
     description=models.TextField()
-    account=models.ForeignKey(Account,on_delete=models.CASCADE,null=True)
+    
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     due_date=models.DateTimeField(null=True)
 

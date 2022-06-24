@@ -11,7 +11,7 @@
       <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
     </li>
     <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Budget</button>
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contacts</button>
     </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
@@ -29,7 +29,7 @@
           <p>{{item.category}} </p>
           <h4>ksh. {{item.amount}} </h4>
           <p>{{item.description}} </p>
-        <a href="# ">Edit Account</a>  
+          
         </div>
         {% empty %}
         <h2>No registered accounts.</h2>
@@ -73,7 +73,7 @@
           <img class="profilepic" src="{{profile.profile_picture.url}} " alt="ppic">
       <h3>{{profile.user.username}} </h3>
       <p>{{profile.bio}} </p>
-      <a href="{% url 'profile_form' user.id %}"><button class="pretty_button">Edit profile</button> </a>
+      <a  href="{% url 'profile_form' user.id %}"><button class="pretty_button">Edit profile</button> </a>
         </div>
         <div class="col-md-4">
           <h3>Personal Info</h3>
