@@ -9,13 +9,13 @@ class ProfileForm(forms.ModelForm):
 )
     class Meta:
         model = Profile
-        fields = ( 'profile_picture','bio','gender','date_of_birth','country','city')
+        fields = [ 'profile_picture','bio','gender','date_of_birth','country','city']
 
 
 class AccountForm(forms.ModelForm):
     class Meta:
         model = Account 
-        fields = ('name','category','amount','description')
+        fields = ['name','category','amount','description']
 
 class BillForm(forms.ModelForm):
     due_date = forms.DateField(
@@ -25,4 +25,4 @@ class BillForm(forms.ModelForm):
 )
     class Meta:
         model = Bill
-        fields = ('category','name','amount','description','account','due_date')
+        fields = ['category','name','amount','description','account','due_date']

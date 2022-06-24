@@ -13,8 +13,8 @@ def home(request):
     user = User.objects.get(id=current_user.id)
     profile = Profile.get_profile_by_id(user.id)
 
-    accounts= Account.objects.all()
-    bills=Bill.objects.all()
+    accounts= Account.objects.filter(user=user)
+    bills=Bill.objects.filter(user=user)
     
 
     context = {
@@ -58,7 +58,14 @@ def account_form(request, id):
         account_form = AccountForm(
             request.POST, request.FILES)
         if account_form.is_valid():
-            account_form.save()
+            account=Account.objects.create(
+               name=account_form.cleaned_data.get('name'),
+               category=account_form.cleaned_data.get('category'),
+               amount=account_form.cleaned_data.get('amount'),
+                description=account_form.cleaned_data.get('description'),
+                user=user
+           )
+            account.save()
 
             return redirect('home')
         else:
@@ -79,7 +86,16 @@ def bill_form(request, id):
         bill_form = BillForm(
             request.POST, request.FILES)
         if bill_form.is_valid():
-            bill_form.save()
+            bill=Bill.objects.create(
+               category=bill_form.cleaned_data.get('category'),
+               name=bill_form.cleaned_data.get('name'),
+               amount=bill_form.cleaned_data.get('amount'),
+                description=bill_form.cleaned_data.get('description'),
+                account=bill_form.cleaned_data.get('account'),
+                due_date=bill_form.cleaned_data.get('due_date'),
+                user=user
+           )
+            bill.save()
 
             return redirect('home')
         else:

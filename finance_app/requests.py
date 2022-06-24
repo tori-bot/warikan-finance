@@ -2,7 +2,7 @@ import requests
 from decouple import config
 
 def get_all_news():
-    url=f'https://newsapi.org/v2/everything?q=money&apiKey={config("API_KEY")}'
+    url=f'https://newsapi.org/v2/everything?q=money&apiKey={config("NEWS_API_KEY")}'
     response=requests.get(url)
     news=response.json()
     news_list=[]

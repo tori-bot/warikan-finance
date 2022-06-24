@@ -11,7 +11,7 @@ class Profile(models.Model):
     ('male', 'male'),
     ('female', 'female'),
     )
-    user=models.OneToOneField(User,primary_key=True,on_delete=models.CASCADE)   
+    user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)   
     profile_picture=models.ImageField(upload_to='profile_pictures/',default='default.jpg',null=True) 
     bio=models.TextField()
     gender=models.CharField(max_length=30,choices=CATEGORIES,default='non-binary',null=True,blank=True)
@@ -99,6 +99,7 @@ class Bill(models.Model):
     amount=models.IntegerField()
     description=models.TextField()
     account=models.ForeignKey(Account,on_delete=models.CASCADE,null=True)
+    user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     due_date=models.DateTimeField(null=True)
 
     def __str__(self):
