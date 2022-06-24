@@ -114,3 +114,12 @@ def news(request):
 def insights(request):
     videos=youtube_videos()
     return render(request,'insights.html',{'videos':videos})
+
+# def delete_account(request,account_id):
+#     account_id=int(account_id)
+#     try:
+#         updated=Account.objects.get(id=account_id)
+#     except Account.DoesNotExist:
+#         return redirect('home')
+#     updated.delete()
+#     return redirect('home')

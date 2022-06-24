@@ -12,4 +12,6 @@ urlpatterns = [
     path('about/',views.about,name='about'),
     path('news/',views.news,name='news'),
     path('insights/',views.insights,name='insights'),
+
+    # path('delete_account/<account_id>/',views.delete_account,name='delete_account'),
 ]
