@@ -65,9 +65,19 @@ class Account(models.Model):
     description = models.TextField()
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
 
+    def create_account(self):
+            self.save()
 
     def delete_account(self):
         self.delete()
+
+    def update_account(self,name,category,amount,description,user):
+        self.name=name
+        self.category=category
+        self.amount=amount
+        self.description=description
+        self.user=user
+        self.save()
 
     def update_account(self,name,category,amount,description,user):
         self.user=user
@@ -88,19 +98,30 @@ CATEGORIES=(
     ('6 months', '6 months'),
     ('annually', 'annually'),
 )
-# class Budget(models.Model):
-#     category=models.CharField(max_length=30,choices=CATEGORIES,default='weekly',null=True)
-#     amount=models.IntegerField()
-#     description=models.TextField()
+
 
 class Bill(models.Model):
     category=models.CharField(max_length=30,choices=CATEGORIES,default='monthly',null=True)
     name=models.CharField(max_length=100,null=True)
     amount=models.IntegerField()
     description=models.TextField()
-    
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     due_date=models.DateTimeField(null=True)
+
+    def create_bill(self):
+            self.save()
+
+    def delete_bill(self):
+        self.delete()
+
+    def update_bill(self,name,category,amount,description,user,due_date):
+        self.name=name
+        self.category=category
+        self.amount=amount
+        self.description=description
+        self.user=user
+        self.due_date=due_date
+        self.save()
 
     def __str__(self):
         return self.name
